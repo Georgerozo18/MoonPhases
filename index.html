@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Moon Phases</title>
+  </head>
+  <body>
+    <a-scene>
+      <a-sky src="./img/8k_stars_milky_way.jpg"></a-sky>
+      <a-camera compass>
+        <a-cursor></a-cursor>
+      </a-camera>
+      <a-light type="point" color="white" position="100 1 0" intensity="1.3399999999999999"></a-light>
+      <a-light type="directional" color="#F0F8FF" position="40 1 0" intensity="1.0" distance="500"></a-light>
+      <a-sphere src="./img/8k_moon.jpg" position="0 1 -20"></a-sphere>
+      <a-sphere src="./img/8k_moon.jpg" position="20 1 -20"></a-sphere>
+      <a-sphere src="./img/8k_moon.jpg" position="-20 1 -20"></a-sphere>
+      <a-sphere src="./img/8k_moon.jpg" position="20 1 0"></a-sphere>
+      <a-sphere src="./img/8k_moon.jpg" position="-20 1 0"></a-sphere>
+      <a-sphere src="./img/8k_moon.jpg" position="20 1 20"></a-sphere>
+      <a-sphere src="./img/8k_moon.jpg" position="-20 1 20"></a-sphere>
+      <a-sphere src="./img/8k_moon.jpg" position="0 1 20"></a-sphere>
+      <a-sphere id="sun" src="./img/8k_sun.jpg" position="150 1 0" radius="20"></a-sphere>
+    </a-scene>
+  </body>
+  <script src = "https://aframe.io/releases/0.8.0/aframe.min.js" ></script>
+  <script src="https://unpkg.com/aframe-point-component/dist/aframe-point-component.min.js"></script>
+  <script src="https://rawgit.com/ngokevin/kframe/master/components/sun-sky/dist/aframe-sun-sky.min.js"></script>
+  <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+</html>
