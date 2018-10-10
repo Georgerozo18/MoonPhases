@@ -6,9 +6,19 @@
   </head>
   <body>
     <a-scene>
-      <a-sky src="./img/8k_stars_milky_way.jpg"></a-sky>
-      <a-camera>
-        <a-cursor color="red" fuse="true">
+      <!-- Assets -->
+      <a-assets>
+        <img src="./img/8k_stars_milky_way.jpg" id="sky">
+        <img src="./img/8k_moon.jpg" id="moon">
+        <img src="./img/8k_sun.jpg" id="sun">
+      </a-assets>
+      <!-- Assets -->
+      <!-- Sky -->
+      <a-sky src="#sky"></a-sky>
+      <!-- Sky -->
+      <!-- Camera -->
+      <a-camera universal-controls>
+        <a-cursor color="red" fuse="true" fuse-timeout="200">
           <a-animation
             begin="click"
             easing="ease-out"
@@ -21,13 +31,69 @@
           </a-animation>
         </a-cursor>
       </a-camera>
+      <!-- Camera -->
+      <!-- Light -->
       <a-light type="point" color="white" position="100 1 0" intensity="1.3399999999999999"></a-light>
       <a-light type="directional" color="#F0F8FF" position="40 1 0" intensity="1.0" distance="500"></a-light>
-      <a-sphere src="./img/8k_moon.jpg" position="0 1 -20"></a-sphere>
-      <a-sphere src="./img/8k_moon.jpg" position="20 1 -20"></a-sphere>
-      <a-sphere src="./img/8k_moon.jpg" position="-20 1 -20"></a-sphere>
-      <a-sphere src="./img/8k_moon.jpg" position="20 1 0"></a-sphere>
-      <a-sphere src="./img/8k_moon.jpg" position="-20 1 0">
+      <!-- Light -->
+      <!-- Moons -->
+      <a-sphere src="#moon" position="0 1 -20" metalness="0" roughness="10">
+        <a-animation
+          begin="click"
+          fill="forwards"
+          repeat="1"
+          direction="alternate"
+          attribute="position"
+          from="0 1 -20"
+          to="0 1 -2"
+          dur="8000"
+          easing="ease-in-out"
+        >
+        </a-animation>
+      </a-sphere>
+      <a-sphere src="#moon" position="20 1 -20" metalness="0" roughness="10">
+        <a-animation
+          begin="click"
+          fill="forwards"
+          repeat="1"
+          direction="alternate"
+          attribute="position"
+          from="20 1 -20"
+          to="2 1 -2"
+          dur="8000"
+          easing="ease-in-out"
+        >
+        </a-animation>
+      </a-sphere>
+      <a-sphere src="#moon" position="-20 1 -20" metalness="0" roughness="10">
+        <a-animation
+          begin="click"
+          fill="forwards"
+          repeat="1"
+          direction="alternate"
+          attribute="position"
+          from="-20 1 -20"
+          to="-2 1 -2"
+          dur="8000"
+          easing="ease-in-out"
+        >
+        </a-animation>
+      </a-sphere>
+      <a-sphere src="#moon" position="20 1 0" metalness="0" roughness="10">
+        <a-animation
+          begin="click"
+          fill="forwards"
+          repeat="1"
+          direction="alternate"
+          attribute="position"
+          from="20 1 0"
+          to="2 1 0"
+          dur="8000"
+          easing="ease-in-out"
+        >
+        </a-animation>
+      </a-sphere>
+      <a-sphere id="llena" src="#moon" position="-20 1 0" metalness="0" roughness="10">
         <a-animation
           begin="click"
           fill="forwards"
@@ -41,10 +107,50 @@
         >
         </a-animation>
       </a-sphere>
-      <a-sphere src="./img/8k_moon.jpg" position="20 1 20"></a-sphere>
-      <a-sphere src="./img/8k_moon.jpg" position="-20 1 20"></a-sphere>
-      <a-sphere src="./img/8k_moon.jpg" position="0 1 20"></a-sphere>
-      <a-sphere id="sun" src="./img/8k_sun.jpg" position="150 1 0" radius="20">
+      <a-sphere src="#moon" position="20 1 20" metalness="0" roughness="10">
+        <a-animation
+          begin="click"
+          fill="forwards"
+          repeat="1"
+          direction="alternate"
+          attribute="position"
+          from="20 1 20"
+          to="2 1 2"
+          dur="8000"
+          easing="ease-in-out"
+        >
+        </a-animation>
+      </a-sphere>
+      <a-sphere src="#moon" position="-20 1 20" metalness="0" roughness="10">
+        <a-animation
+          begin="click"
+          fill="forwards"
+          repeat="1"
+          direction="alternate"
+          attribute="position"
+          from="-20 1 20"
+          to="-2 1 2"
+          dur="8000"
+          easing="ease-in-out"
+        >
+        </a-animation>
+      </a-sphere>
+      <a-sphere src="#moon" position="0 1 20" metalness="0" roughness="10">
+        <a-animation
+          begin="click"
+          fill="forwards"
+          repeat="1"
+          direction="alternate"
+          attribute="position"
+          from="0 1 20"
+          to="0 1 2"
+          dur="8000"
+          easing="ease-in-out"
+        </a-animation>
+      </a-sphere>
+      <!-- Moons -->
+      <!-- Sun -->
+      <a-sphere src="#sun" position="150 1 0" radius="20" metalness="0" roughness="10">
         <a-animation
           begin="click"
           easing="linear"
@@ -54,10 +160,10 @@
           to="0 360 0"
         ></a-animation>
       </a-sphere>
+      <!-- Sun -->
     </a-scene>
   </body>
   <script src = "https://aframe.io/releases/0.8.2/aframe.min.js" ></script>
   <script src="https://unpkg.com/aframe-point-component/dist/aframe-point-component.min.js"></script>
-  <script src="https://rawgit.com/ngokevin/kframe/master/components/sun-sky/dist/aframe-sun-sky.min.js"></script>
   <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
 </html>
