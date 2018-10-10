@@ -7,8 +7,19 @@
   <body>
     <a-scene>
       <a-sky src="./img/8k_stars_milky_way.jpg"></a-sky>
-      <a-camera compass>
-        <a-cursor></a-cursor>
+      <a-camera>
+        <a-cursor color="red" fuse="true">
+          <a-animation
+            begin="click"
+            easing="ease-out"
+            attribute="scale"
+            dur="500"
+            fill="forwards"
+            from="0.2 0.2 0.2"
+            to="1 1 1"
+          >
+          </a-animation>
+        </a-cursor>
       </a-camera>
       <a-light type="point" color="white" position="100 1 0" intensity="1.3399999999999999"></a-light>
       <a-light type="directional" color="#F0F8FF" position="40 1 0" intensity="1.0" distance="500"></a-light>
@@ -16,11 +27,33 @@
       <a-sphere src="./img/8k_moon.jpg" position="20 1 -20"></a-sphere>
       <a-sphere src="./img/8k_moon.jpg" position="-20 1 -20"></a-sphere>
       <a-sphere src="./img/8k_moon.jpg" position="20 1 0"></a-sphere>
-      <a-sphere src="./img/8k_moon.jpg" position="-20 1 0"></a-sphere>
+      <a-sphere src="./img/8k_moon.jpg" position="-20 1 0">
+        <a-animation
+          begin="click"
+          fill="forwards"
+          repeat="1"
+          direction="alternate"
+          attribute="position"
+          from="-20 1 0"
+          to="-2 1 0"
+          dur="8000"
+          easing="ease-in-out"
+        >
+        </a-animation>
+      </a-sphere>
       <a-sphere src="./img/8k_moon.jpg" position="20 1 20"></a-sphere>
       <a-sphere src="./img/8k_moon.jpg" position="-20 1 20"></a-sphere>
       <a-sphere src="./img/8k_moon.jpg" position="0 1 20"></a-sphere>
-      <a-sphere id="sun" src="./img/8k_sun.jpg" position="150 1 0" radius="20"></a-sphere>
+      <a-sphere id="sun" src="./img/8k_sun.jpg" position="150 1 0" radius="20">
+        <a-animation
+          begin="click"
+          easing="linear"
+          attribute="rotation"
+          dur="20000"
+          fill="backwards"
+          to="0 360 0"
+        ></a-animation>
+      </a-sphere>
     </a-scene>
   </body>
   <script src = "https://aframe.io/releases/0.8.2/aframe.min.js" ></script>
