@@ -3,21 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>Moon Phases</title>
+    <script src = "https://aframe.io/releases/0.8.2/aframe.min.js" ></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene vr-mode-ui auto-enter-vr>
       <!-- Assets -->
       <a-assets>
         <img src="/img/8k_stars_milky_way.jpg" id="sky">
-        <img src="/img/8k_moon.jpg" id="moon">
+        <img src="/img/2k_moon.jpg" id="moon">
         <img src="/img/8k_sun.jpg" id="sun">
+        <img src="/img/2k_earth.jpg" id="earth">
       </a-assets>
       <!-- Assets -->
       <!-- Sky -->
       <a-sky src="#sky"></a-sky>
       <!-- Sky -->
       <!-- Camera -->
-      <a-camera universal-controls>
+      <a-camera
+        look-controls="pointerLockEnabled: true"
+        movement-controls="controls: checkpoint"
+        checkpoint-controls="mode: animate"
+        position=" 0 -100 0"
+        rotation=" 0 180 0">
         <a-cursor color="red" fuse="true" fuse-timeout="200">
           <a-animation
             begin="click"
@@ -36,6 +44,67 @@
       <a-light type="point" color="white" position="100 1 0" intensity="1.3399999999999999"></a-light>
       <a-light type="directional" color="#F0F8FF" position="40 1 0" intensity="1.0" distance="500"></a-light>
       <!-- Light -->
+      <!-- Main Menu -->
+      <a-curvedimage
+        color="cyan"
+        opacity="0.5"
+        position="0 -100 -7"
+        scale="0.8 0.8 0.8"
+        rotation="0 105 0"
+        radius="15"
+        theta-lenght="80"
+        height="15"
+        width="150">
+      </a-curvedimage>
+      <a-text
+        value="Fases Lunares Astronomia General"
+        position="0 -96 -15"
+        color="white"
+        width="20"
+        align="center"
+        opacity="0.8">
+      </a-text>
+      <a-text
+        value="Perspectiva desde el Hemisferio Sur Terrestre"
+        position="0 -97 -15"
+        color="white"
+        width="15"
+        align="center"
+        opacity="0.8">
+      </a-text>
+      <a-sphere
+      src="#earth"
+      position="0 -100 -10"
+      color="white"
+      radius="1.1"
+      metalness="0"
+      roughness="10">
+      <a-animation
+        begin="click"
+        easing="linear"
+        attribute="rotation"
+        dur="20000"
+        fill="backwards"
+        to="0 360 0">
+      </a-animation>
+      </a-sphere>
+      <a-text
+        value="Jorge Hernandez - Byron Pena"
+        position="0 -103 -16"
+        color="white"
+        width="20"
+        align="center"
+        opacity="0.8">
+      </a-text>
+      <a-text
+        value="Universidad Pedagogica Nacional"
+        position="0 -104 -16"
+        color="white"
+        width="20"
+        align="center"
+        opacity="0.8">
+      </a-text>
+      <!-- Main Menu -->
       <!-- Moons -->
       <a-sphere src="#moon" position="0 1 -20" metalness="0" roughness="10">
         <a-animation
@@ -145,7 +214,7 @@
           from="0 1 20"
           to="0 1 2"
           dur="8000"
-          easing="ease-in-out"
+          easing="ease-in-out">
         </a-animation>
       </a-sphere>
       <!-- Moons -->
@@ -161,9 +230,26 @@
         ></a-animation>
       </a-sphere>
       <!-- Sun -->
+      <!-- Earth -->
+      <a-sphere
+      src="#earth"
+      position="0 1 0"
+      color="white"
+      radius="1.1"
+      metalness="0"
+      roughness="10"
+      checkpoint>
+      <a-animation
+        begin="click"
+        easing="linear"
+        attribute="rotation"
+        dur="20000"
+        fill="backwards"
+        to="0 360 0">
+      </a-animation>
+      </a-sphere>
+      <!-- Earth -->
     </a-scene>
   </body>
-  <script src = "https://aframe.io/releases/0.8.2/aframe.min.js" ></script>
-  <script src="https://unpkg.com/aframe-point-component/dist/aframe-point-component.min.js"></script>
-  <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+  <script src="/js/index.js"></script>
 </html>
