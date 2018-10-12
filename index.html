@@ -24,9 +24,9 @@
         look-controls="pointerLockEnabled: true"
         movement-controls="controls: checkpoint"
         checkpoint-controls="mode: animate"
-        position=" 0 -100 0"
+        position=" 0 1 0"
         rotation=" 0 180 0">
-        <a-cursor color="red" fuse="true" fuse-timeout="200">
+        <a-cursor color="red" fuse="true" fuse-timeout="500">
           <a-animation
             begin="click"
             easing="ease-out"
@@ -41,40 +41,33 @@
       </a-camera>
       <!-- Camera -->
       <!-- Light -->
-      <a-light type="point" color="white" position="100 1 0" intensity="1.3399999999999999"></a-light>
+      <a-light type="point" color="white" position="100 1 0" intensity="1.2"></a-light>
       <a-light type="directional" color="#F0F8FF" position="40 1 0" intensity="1.0" distance="500"></a-light>
+      <a-light
+        type="spot"
+        position="0 3.951 -3.335"
+        rotation=" 0 90 0"
+        distance="15"
+        target="#mainMenu"
+        intesity="2"
+        decay="0.5">
+      </a-light>
       <!-- Light -->
       <!-- Main Menu -->
-      <a-curvedimage
-        color="cyan"
-        opacity="0.5"
-        position="0 -100 -7"
-        scale="0.8 0.8 0.8"
-        rotation="0 105 0"
-        radius="15"
-        theta-lenght="80"
-        height="15"
-        width="150">
-      </a-curvedimage>
-      <a-text
-        value="Fases Lunares Astronomia General"
-        position="0 -96 -15"
-        color="white"
-        width="20"
-        align="center"
-        opacity="0.8">
-      </a-text>
-      <a-text
-        value="Perspectiva desde el Hemisferio Sur Terrestre"
-        position="0 -97 -15"
-        color="white"
-        width="15"
-        align="center"
-        opacity="0.8">
-      </a-text>
+      <a-entity
+        geometry="primitive: plane; height:8; width:10;"
+        material="color:cyan; opacity:0.5; side:double;"
+        text="align:center; width:10; baseline:top;
+        value:Fases Lunares Astronomia General \n
+              Perspectiva desde el Hemisferio Sur Terrestre \n
+              Jorge Hernandez - Byron Pena \n
+              Universidad Pedagogica Nacional;"
+        id="mainMenu"
+        position="0 0 -10">
+      </a-entity>
       <a-sphere
       src="#earth"
-      position="0 -100 -10"
+      position="0 1.9 -8.5"
       color="white"
       radius="1.1"
       metalness="0"
@@ -88,22 +81,6 @@
         to="0 360 0">
       </a-animation>
       </a-sphere>
-      <a-text
-        value="Jorge Hernandez - Byron Pena"
-        position="0 -103 -16"
-        color="white"
-        width="20"
-        align="center"
-        opacity="0.8">
-      </a-text>
-      <a-text
-        value="Universidad Pedagogica Nacional"
-        position="0 -104 -16"
-        color="white"
-        width="20"
-        align="center"
-        opacity="0.8">
-      </a-text>
       <!-- Main Menu -->
       <!-- Moons -->
       <a-sphere src="#moon" position="0 1 -20" metalness="0" roughness="10">
@@ -231,7 +208,7 @@
       </a-sphere>
       <!-- Sun -->
       <!-- Earth -->
-      <a-sphere
+      <!-- <a-sphere
       src="#earth"
       position="0 1 0"
       color="white"
@@ -247,7 +224,7 @@
         fill="backwards"
         to="0 360 0">
       </a-animation>
-      </a-sphere>
+      </a-sphere> -->
       <!-- Earth -->
     </a-scene>
   </body>
