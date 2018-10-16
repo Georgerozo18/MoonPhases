@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Moon Phases</title>
-    <script src = "https://aframe.io/releases/0.8.2/aframe.min.js" ></script>
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js"></script>
+    <script src = "js/aframe0.8.2.js" ></script>
+    <script src="js/aframe-extrasv4.2.0.js"></script>
   </head>
   <body>
     <a-scene vr-mode-ui auto-enter-vr>
@@ -14,6 +14,7 @@
         <img src="/img/2k_moon.jpg" id="moon">
         <img src="/img/8k_sun.jpg" id="sun">
         <img src="/img/2k_earth.jpg" id="earth">
+        <img src="/img/up-arrow.png" id="up">
       </a-assets>
       <!-- Assets -->
       <!-- Sky -->
@@ -41,14 +42,23 @@
       </a-camera>
       <!-- Camera -->
       <!-- Light -->
-      <a-light type="point" color="white" position="100 1 0" intensity="1.2"></a-light>
-      <a-light type="directional" color="#F0F8FF" position="40 1 0" intensity="1.0" distance="500"></a-light>
+      <a-light type="point" color="white" position="80 50 0" intensity="1.2"></a-light>
+      <a-light type="directional" color="#F0F8FF" position="150 50 0" intensity="1.0" distance="500"></a-light>
       <a-light
         type="spot"
         position="0 3.951 -3.335"
         rotation=" 0 90 0"
         distance="15"
         target="#mainMenu"
+        intesity="2"
+        decay="0.5">
+      </a-light>
+      <a-light
+        type="spot"
+        position="18 7 -10"
+        rotation=" 0 90 0"
+        distance="15"
+        target="#secondMenu"
         intesity="2"
         decay="0.5">
       </a-light>
@@ -62,12 +72,13 @@
               Perspectiva desde el Hemisferio Sur Terrestre \n
               Jorge Hernandez - Byron Pena \n
               Universidad Pedagogica Nacional;"
-        id="mainMenu"
-        position="0 0 -10">
+        id="secondMenu"
+        position="25 7 -10"
+        rotation=" 0 -90 0">
       </a-entity>
       <a-sphere
       src="#earth"
-      position="0 1.9 -8.5"
+      position="23 8.5 -10"
       color="white"
       radius="1.1"
       metalness="0"
@@ -81,122 +92,171 @@
         to="0 360 0">
       </a-animation>
       </a-sphere>
+      <a-entity
+        geometry="primitive: plane; height:8; width:10;"
+        material="color:cyan; opacity:0.5; side:double;"
+        text="align:center; width:15; baseline:center;
+        value:Hola para navegar por el espacio \n
+              Enfoca el punto Rojo  \n
+              Sobre las flechas distribuidas \n
+              El espacio ;"
+        id="mainMenu"
+        position="0 0 -10">
+      </a-entity>
+      <!-- Buttons Nav -->
+      <a-cylinder position="10 6 -10" rotation="90 0 0" radius="0.5" height="0.2"
+      segments-radial="64" color="yellow" metalness="0.5" src="#up" checkpoint>
+      </a-cylinder>
+
+      <a-cylinder position="40 20 -5" rotation="90 90 0" radius="0.5" height="0.2"
+      segments-radial="64" color="yellow" metalness="0.5" src="#up" checkpoint id="near">
+      </a-cylinder>
+      <a-light
+        type="spot"
+        position="37 20 -5"
+        rotation=" 0 90 0"
+        distance="15"
+        target="#near"
+        intesity="2"
+        decay="0.5">
+      </a-light>
+      <a-entity
+        geometry="primitive: plane; height:8; width:10;"
+        material="color:cyan; opacity:0.5; side:double;"
+        text="align:center; width:15; baseline:center;
+        value:Busca en la parte superior \n
+              El planeta tierra en medio de   \n
+              las 8 lunas y enfocalo;"
+        id="lastMenu"
+        position="37 20 10"
+        rotation="0 180 0">
+      </a-entity>
+      <a-light
+        type="spot"
+        position="37 20 -2"
+        rotation=" 0 180 0"
+        distance="15"
+        target="#lastMenu"
+        intesity="2"
+        decay="0.5">
+      </a-light>
+      <!-- Buttons Nav -->
       <!-- Main Menu -->
       <!-- Moons -->
-      <a-sphere src="#moon" position="0 1 -20" metalness="0" roughness="10">
+      <a-sphere src="#moon" position="0 50 -20" metalness="0" roughness="10">
         <a-animation
           begin="click"
           fill="forwards"
           repeat="1"
           direction="alternate"
           attribute="position"
-          from="0 1 -20"
-          to="0 1 -2"
+          from="0 50 -20"
+          to="0 50 -2"
           dur="8000"
           easing="ease-in-out"
         >
         </a-animation>
       </a-sphere>
-      <a-sphere src="#moon" position="20 1 -20" metalness="0" roughness="10">
+      <a-sphere src="#moon" position="20 50 -20" metalness="0" roughness="10">
         <a-animation
           begin="click"
           fill="forwards"
           repeat="1"
           direction="alternate"
           attribute="position"
-          from="20 1 -20"
-          to="2 1 -2"
+          from="20 50 -20"
+          to="2 50 -2"
           dur="8000"
           easing="ease-in-out"
         >
         </a-animation>
       </a-sphere>
-      <a-sphere src="#moon" position="-20 1 -20" metalness="0" roughness="10">
+      <a-sphere src="#moon" position="-20 50 -20" metalness="0" roughness="10">
         <a-animation
           begin="click"
           fill="forwards"
           repeat="1"
           direction="alternate"
           attribute="position"
-          from="-20 1 -20"
-          to="-2 1 -2"
+          from="-20 50 -20"
+          to="-2 50 -2"
           dur="8000"
           easing="ease-in-out"
         >
         </a-animation>
       </a-sphere>
-      <a-sphere src="#moon" position="20 1 0" metalness="0" roughness="10">
+      <a-sphere src="#moon" position="20 50 0" metalness="0" roughness="10">
         <a-animation
           begin="click"
           fill="forwards"
           repeat="1"
           direction="alternate"
           attribute="position"
-          from="20 1 0"
-          to="2 1 0"
+          from="20 50 0"
+          to="2 50 0"
           dur="8000"
           easing="ease-in-out"
         >
         </a-animation>
       </a-sphere>
-      <a-sphere id="llena" src="#moon" position="-20 1 0" metalness="0" roughness="10">
+      <a-sphere id="llena" src="#moon" position="-20 50 0" metalness="0" roughness="10">
         <a-animation
           begin="click"
           fill="forwards"
           repeat="1"
           direction="alternate"
           attribute="position"
-          from="-20 1 0"
-          to="-2 1 0"
+          from="-20 50 0"
+          to="-2 50 0"
           dur="8000"
           easing="ease-in-out"
         >
         </a-animation>
       </a-sphere>
-      <a-sphere src="#moon" position="20 1 20" metalness="0" roughness="10">
+      <a-sphere src="#moon" position="20 50 20" metalness="0" roughness="10">
         <a-animation
           begin="click"
           fill="forwards"
           repeat="1"
           direction="alternate"
           attribute="position"
-          from="20 1 20"
-          to="2 1 2"
+          from="20 50 20"
+          to="2 50 2"
           dur="8000"
           easing="ease-in-out"
         >
         </a-animation>
       </a-sphere>
-      <a-sphere src="#moon" position="-20 1 20" metalness="0" roughness="10">
+      <a-sphere src="#moon" position="-20 50 20" metalness="0" roughness="10">
         <a-animation
           begin="click"
           fill="forwards"
           repeat="1"
           direction="alternate"
           attribute="position"
-          from="-20 1 20"
-          to="-2 1 2"
+          from="-20 50 20"
+          to="-2 50 2"
           dur="8000"
           easing="ease-in-out"
         >
         </a-animation>
       </a-sphere>
-      <a-sphere src="#moon" position="0 1 20" metalness="0" roughness="10">
+      <a-sphere src="#moon" position="0 50 20" metalness="0" roughness="10">
         <a-animation
           begin="click"
           fill="forwards"
           repeat="1"
           direction="alternate"
           attribute="position"
-          from="0 1 20"
-          to="0 1 2"
+          from="0 50 20"
+          to="0 50 2"
           dur="8000"
           easing="ease-in-out">
         </a-animation>
       </a-sphere>
       <!-- Moons -->
       <!-- Sun -->
-      <a-sphere src="#sun" position="150 1 0" radius="20" metalness="0" roughness="10">
+      <a-sphere src="#sun" position="150 52 0" radius="20" metalness="0" roughness="10">
         <a-animation
           begin="click"
           easing="linear"
@@ -208,9 +268,9 @@
       </a-sphere>
       <!-- Sun -->
       <!-- Earth -->
-      <!-- <a-sphere
+      <a-sphere
       src="#earth"
-      position="0 1 0"
+      position="0 50 0"
       color="white"
       radius="1.1"
       metalness="0"
@@ -224,7 +284,7 @@
         fill="backwards"
         to="0 360 0">
       </a-animation>
-      </a-sphere> -->
+      </a-sphere>
       <!-- Earth -->
     </a-scene>
   </body>
